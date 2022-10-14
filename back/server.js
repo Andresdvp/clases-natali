@@ -4,6 +4,7 @@ const app = require("./app")
 const dotenv =require("dotenv");
 dotenv.config({path:'back/config/config.env'})
 
+//llamamos al server
 const server = app.listen(process.env.PORT, () => {
-    console.log(`hola si funsiona en el puerto: ${process.env.PORT}en modo ${process.env.NODE_ENV}`)
+    console.log(`hola si funsiona en el puerto: ${process.env.PORT} en modo ${process.env.NODE_ENV}`)
 })

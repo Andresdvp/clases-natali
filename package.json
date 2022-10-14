@@ -4,21 +4,26 @@
   "description": "tienda virtual ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node back/server.js",
+    "dev": " SET NODE_ENV=DEVELPMENT& nodemon back/server",
+    "prod":" SET NODE_ENV=PRODUCTION& nodemon back/server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Andresdvp/clase-natali.git"
+    "url": "git+https://github.com/Andresdvp/clases-natali.git"
   },
   "author": "Andres Valencia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Andresdvp/clase-natali/issues"
+    "url": "https://github.com/Andresdvp/clases-natali/issues"
   },
-  "homepage": "https://github.com/Andresdvp/clase-natali#readme",
+  "homepage": "https://github.com/Andresdvp/clases-natali#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
