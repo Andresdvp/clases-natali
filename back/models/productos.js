@@ -55,13 +55,13 @@ const productosSchema = mongoose.Schema({
         type:String,
         required:[true,"por favor registre el vendedor del producto. "]
     },
-    inventiario:{
+    inventario:{
         type:Number,
         required:[true,"por favorbregistre el stock del producto. "],
         maxLength:[5,"Cantidad maxima del producto"],
         default: 0
     },
-    nunCalificaciones:{
+    numCalificaciones :{
         type:Number,
         default: 0
 
