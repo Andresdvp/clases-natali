@@ -10,8 +10,8 @@ const connecDaatabase = ()=>{
     }).catch(con => {
         console.log(`No se logro la conexcion a la base de datos`)
     })
-
+ 
 }
 
 
-module.exports=connecDaatabase;
+module.exports=connecDaatabase; 

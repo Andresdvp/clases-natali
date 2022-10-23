@@ -1,133 +1,67 @@
 import React, { Fragment, useEffect } from 'react'
 import MetaData from './layout/MetaData';
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/productActions';
+import{Link} from 'react-router-dom'
+import { useAlert } from 'react-alert';
+
 
 export const Home = () => {
-    
+    const { loading, productos, error } = useSelector(state => state.products)
+    const alert = useAlert();
     const dispatch = useDispatch();
-    useEffect(()=>{
+
+    useEffect(() => {
+        if(error){
+            return alert.error(error)
+        }
+
         dispatch(getProducts());
-    },[dispatch])
+        alert.success("OK")
 
+    }, [dispatch])
 
-
-    return (
+    return ( 
         <Fragment>
-            <MetaData title="probando"></MetaData>
-            <h1 id="encabezado_productos">Ultimos productos</h1>
+            {loading ? <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>  : (
+                <Fragment>
+                    <MetaData title="probando"></MetaData>
+                    <h1 id="encabezado_productos">Ultimos productos</h1>
 
-            <section id='productos' className='container mt-5 '>
-                <div className='row'>
-                    
-                   {/*producto 1 */}
-                    <div className=' col-sm-12 col-md-6 col-lg-3 my'>
 
-                        <div className='card p-3 rounded'>
+                    <section id='productos' className='container mt-5 '>
+                        <div className='row'>
+                            {productos && productos.map(producto => (
 
-                            <img className='card-img-top mx=auto' src='./images/batido_verde.png' alt='Batido_verde'></img>
-                            <div className='card-body d-flex flex-column'>
-                                <h5 id='titulo_product'><a href='http://localhost:3000/'>Batido_verde</a></h5>
-                                <div className='rating mt-auto'>
-                                    <div className='rating-outer'>
-                                        <div className='rating-inner'></div>
+                                <div key={producto._id} className=' col-sm-12 col-md-6 col-lg-3 my'>
+                                    <div className='card p-3 rounded'>
+                                        <img className='card-img-top mx=auto' src={producto.imagen[0].url} alt={producto.imagen[0].public_id}></img>
+                                        <div className='card-body d-flex flex-column'>
+                                            <h5 id='titulo_product'><Link to={`/producto/${producto._id}`}>{producto.nombre}</Link></h5>
+                                            <div className='rating mt-auto'>
+                                                <div className='rating-outer'>
+                                                    <div className='rating-inner' style={{ width: `${(producto.calificacion / 5) * 100}%` }}></div>
+                                                </div>
+                                                <span id="No_de_opiniones"> ${producto.numCalificaciones} Reviews</span>
+
+                                            </div>
+                                            <p className='card-text'>${producto.precio}</p>
+                                            <Link to ={`/producto/${producto._id}`} id='view_btn' className='btn btn-block'>Ver detalles</Link>
+
+                                        </div>
+
                                     </div>
-                                    <span id="No_de_opiniones"> 5 reviews</span>
+
 
                                 </div>
-                                <p className='card-text'>$72.000</p>
-                                <a href="http://localhost:3000/" id='view_btn' className='btn btn-block'>ver_detalles</a>
-
-                            </div>
+                            ))}
 
                         </div>
+                    </section>
+                </Fragment>
 
+            )}
 
-                    </div>
-
-                    {/*producto 2 */}
-                    <div className=' col-sm-12 col-md-6 col-lg-3 my'>
-
-                        <div className='card p-3 rounded'>
-
-                            <img className='card-img-top mx=auto' src='./images/colageno_biotina.png' alt='Batido_verde'></img>
-                            <div className='card-body d-flex flex-column'>
-                                <h5 id='titulo_product'><a href='http://localhost:3000/'>colageno_biotina</a></h5>
-                                <div className='rating mt-auto'>
-                                    <div className='rating-outer'>
-                                        <div className='rating-inner'></div>
-                                    </div>
-                                    <span id="No_de_opiniones"> 15 reviews</span>
-
-                                </div>
-                                <p className='card-text'>$60.000</p>
-                                <a href="http://localhost:3000/" id='view_btn' className='btn btn-block'>ver_detalles</a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                    {/*producto 3 */}
-
-                    <div className=' col-sm-12 col-md-6 col-lg-3 my'>
-
-                        <div className='card p-3 rounded'>
-
-                            <img className='card-img-top mx=auto' src='./images/vinagre.png' alt='Batido_verde'></img>
-                            <div className='card-body d-flex flex-column'>
-                                <h5 id='titulo_product'><a href='http://localhost:3000/'>vinagre</a></h5>
-                                <div className='rating mt-auto'>
-                                    <div className='rating-outer'>
-                                        <div className='rating-inner'></div>
-                                    </div>
-                                    <span id="No_de_opiniones"> 25 reviews</span>
-
-                                </div>
-                                <p className='card-text'>$42.000</p>
-                                <a href="http://localhost:3000/" id='view_btn' className='btn btn-block'>ver_detalles</a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    {/*producto 4 */}
-
-                    <div className=' col-sm-12 col-md-6 col-lg-3 my'>
-
-                        <div className='card p-3 rounded'>
-
-                            <img className='card-img-top mx=auto' src='./images/3_max.png' alt='Batido_verde'></img>
-                            <div className='card-body d-flex flex-column'>
-                                <h5 id='titulo_product'><a href='http://localhost:3000/'>3_max</a></h5>
-                                <div className='rating mt-auto'>
-                                    <div className='rating-outer'>
-                                        <div className='rating-inner'></div>
-                                    </div>
-                                    <span id="No_de_opiniones"> 16 reviews</span>
-
-                                </div>
-                                <p className='card-text'>$90.000</p>
-                                <a href="http://localhost:3000/" id='view_btn' className='btn btn-block'>ver_detalles</a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-            </section>
 
         </Fragment >
     )

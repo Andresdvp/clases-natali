@@ -7,7 +7,9 @@ import{
 }from "../constants/productConstants";
 
 export const getProducts = () =>async(dispatch)=>{
+    //intentar despachar
     try{
+        
         dispatch({type: ALL_PRODUCTS_REQUEST})
 
         const{data}= await axios.get('api/productos')

@@ -96,5 +96,5 @@ const productosSchema = mongoose.Schema({
 
 })
 
-//exportar el modulo en un modelo mongoose, que se va llamar procuctos y viene del esquema productosSchema 
-module.exports=mongoose.model("procuctos",productosSchema)
+//exportar el modulo en un modelo mongoose, que se va llamar productos y viene del esquema productosSchema 
+module.exports=mongoose.model("productos",productosSchema)
