@@ -23,10 +23,12 @@ exports.getProducts=async (req,res,next) =>{
   // ver producto por ID
 exports.getProductById= async(req, res, next)=>{
  const productoId = await producto.findById(req.params.id)
+ 
     if (!productoId){
         return res.status(404).json({
             success:false,
-            message:"No encontramos este producto"
+            message:"No encontramos este producto",
+            error:true
         })
     }
     res.status(200).json({

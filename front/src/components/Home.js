@@ -13,7 +13,7 @@ export const Home = () => {
 
     useEffect(() => {
         if(error){
-            return alert.error(error)
+            return alert.error("ERROR")
         }
 
         dispatch(getProducts());
