@@ -23,7 +23,7 @@ export const Home = () => {
 
     return ( 
         <Fragment>
-            {loading ? <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>  : (
+            {loading ? <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>  : (
                 <Fragment>
                     <MetaData title="probando"></MetaData>
                     <h1 id="encabezado_productos">Ultimos productos</h1>

@@ -5,11 +5,11 @@ const {getProducts, newProduct, getProductById, updateproduct, deleteproduct}= r
 
 router.route('/productos').get(getProducts)//establecemos desde que ruta queremos ver el getProducts
 
-router.route('/productos/nuevo').post(newProduct)//establecemos la ruta del nuevo producto
+router.route('/producto/nuevo').post(newProduct)//establecemos la ruta del nuevo producto
 
-router.route('/productos/:id').get(getProductById)//establecemos la ruta del producto por id 
+router.route('/producto/:id').get(getProductById)//establecemos la ruta del producto por id 
 
-router.route('/productos/:id').put(updateproduct)//establecemos ruta de actualizacion 
+router.route('/producto/:id').put(updateproduct)//establecemos ruta de actualizacion 
 
-router.route('/productos/:id').delete(deleteproduct)//establecemos ruta de eliminacion del producto
+router.route('/producto/:id').delete(deleteproduct)//establecemos ruta de eliminacion del producto
 module.exports=router;

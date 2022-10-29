@@ -47,39 +47,34 @@ import { ALL_PRODUCTS_REQUEST,
 
   //REDUCER PARA LOS DETALLES
 
-  export const productDatailsReducer =(state={product : {}},action)=>{
-    switch(action.type){
-        //caso requerido
+  export const productDetailsReducer = (state = { product: {} }, action) => {
+    switch (action.type) {
+
         case PRODUCT_DETAILS_REQUEST:
-            return{
+            return {
                 ...state,
-                loading: true,
-                
+                loading: true
             }
-        //caso con exito
+
         case PRODUCT_DETAILS_SUCCESS:
-            return{
+            return {
                 loading: false,
-                productos: action.payload.productoId,
-                
+                product: action.payload
             }
-        
-            //caso fallido
+
         case PRODUCT_DETAILS_FAIL:
-            return{
+            return {
                 ...state,
                 error: action.payload
             }
 
-            //eliminacion de errores
         case CLEAR_ERRORS:
-            return{
+            return {
                 ...state,
                 error: null
-            }         
-            //captuarar errores por defauld
-        default:
-            return state;
+            }
 
+        default:
+            return state
     }
-  }
+}
