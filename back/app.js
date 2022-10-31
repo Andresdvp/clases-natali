@@ -1,13 +1,17 @@
-const { json } = require("express");
-const express = require("express");
+const express=require("express");
 const app = express();
+const errorMiddleware= require("./middleware/errors")
 
 app.use(express.json());
 
-//importar rutas 
-const productos = require("./routes/pruducts")
+//Importar rutas
+const productos=require("./routes/pruducts")
+const usuarios=require("./routes/auth")
 
-app.use('/api',productos)//sujeto a decision (ruta de navegador)
+app.use('/api',productos) //Sujeto a decision (ruta del navegador)
+app.use('/api',usuarios)
 
-//para exportar libreria o toda la clase
+//MiddleWares para manejar errores
+app.use(errorMiddleware)
+
 module.exports=app
